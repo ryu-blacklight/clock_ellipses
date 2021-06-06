@@ -1,6 +1,6 @@
-int radiusHour, radiusMin, radiusSec, radiusStr1, radiusStr2;
+int radiusHour, radiusMin, radiusSec, radiusStr1, radiusStr2, varI1;
 
-int[] colors = {100,100,100};  //色のHSBだけ格納。
+int[] colors = {160,100,100};  //色のHSBだけ格納。
 
 int[][] backEllipse = new int [20][20];
 
@@ -34,6 +34,8 @@ void setup(){
   repeatCalc(24, 15, "hour");
   repeatCalc(8, 45, "24/3");
   repeatCalc(12, 30, "60/5");
+  
+  varI1 = 4;
 }
 
 
@@ -61,6 +63,14 @@ void draw(){
     int varL = l*5;
     setScale(stringCoord2[0][l], stringCoord2[1][l], varL);
   }
+  
+  secCounter();
+  
+  /*
+  if(frameCount <= 300){
+    saveFrame("frame/frame####.tga");
+  }
+  */
 }
 
 
@@ -162,13 +172,29 @@ void setEllipse(float x, float y, int dia, boolean filling, boolean visible){  /
   ellipse(x, y, dia, dia);
 }
 
+
 void setScale(float x, float y, int scaleNumber){
   
   fill(colors[0], colors[1], colors[2],1);
   textAlign(CENTER,CENTER);
   textSize(18);
-  text(scaleNumber,x,y);
+  text(scaleNumber,x,y-3);
   
+}
+
+
+void secCounter(){
+  stroke(colors[0], colors[1]-varI1, colors[2],1);
+  noFill();
+  
+  float shrink = 120/(varI1/4);
+  ellipse(0, 0, 150 - shrink, 150 - shrink);
+  
+  if(varI1 > 120){
+    varI1 = 4;
+  }else{
+    varI1 += 4;
+  }
 }
 
 
@@ -183,16 +209,19 @@ void backEllipse(){
       
       if(surp != 0){
         //ある（0以外）時。
+        noStroke();
         fill(190,40,10,1);
         ellipse(a,b,41,41);
       }else{
         //ない時。
+        noStroke();
         fill(190,30,12,1);
         ellipse(a,b,45,45);
       }
     }
   }
 }
+
 
 /*
 参考記事
