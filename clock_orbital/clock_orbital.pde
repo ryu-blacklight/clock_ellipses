@@ -148,7 +148,7 @@ void visiblitySet(){
 
 void setEllipse(float x, float y, int dia, boolean filling, boolean visible){  //円を描写を担当。これ一つで正円は全て描写可能。個別の色指定は厳しい設定。
   
-  int vis;
+  char vis;
   
   if(visible == false){  //ブーリアンをエセ２進数に変換。
     //可視設定がfalseの時。
