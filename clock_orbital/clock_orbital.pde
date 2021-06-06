@@ -4,7 +4,7 @@ int[] colors = {160,100,100};  //色のHSBだけ格納。
 
 int[][] backEllipse = new int [20][20];
 
-float[][] secCoord = new float [2][60];  //秒ごとの座標の二次元配列。
+float[][] secCoord = new float [2][60];  //秒ごとの座標の二次元配列。[0]はx、[1]がy座標。
 float[][] minCoord = new float [2][60];  //分ごと。
 float[][] hourCoord = new float [2][24];  //時間ごと。
 
