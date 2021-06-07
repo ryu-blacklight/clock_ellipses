@@ -84,7 +84,7 @@ void repeatCalc(int j,  int degK, String type){
 
 
 void calcCoord(int i, float rad, String type){
-  //setupで呼び出される、これから置かれる図形の座標を予め計算して配列に保管する関数。
+  //setupからrepeatCalcで呼び出される、これから置かれる図形の座標を予め計算して配列に保管する関数。
   
   switch(type){  //文字列で判定
     case "second":
@@ -116,15 +116,15 @@ void calcCoord(int i, float rad, String type){
 
 
 void visiblitySet(){
-  repSet(60,second(),"second");
-  repSet(60,minute(),"minute");
-  repSet(24,hour(),"hour");
+  repeatSet(60,second(),"second");
+  repeatSet(60,minute(),"minute");
+  repeatSet(24,hour(),"hour");
 }
 
 
-void repSet(int repeat, int check, String type){
+void repeatSet(int repeat, int check, String type){
   for(int i = 0; i < repeat; i++){
-    if(i <= check){  //秒の図形の可視設定。
+    if(i <= check){  //繰り返し回数が今の時間・分・秒以下ならそれぞれを可視状態にする
       switch(type){
         case "second":
           visSec[i] = true;
