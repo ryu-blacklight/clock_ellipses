@@ -4,7 +4,7 @@ int[] colors = {160,100,100};  //色のHSBだけ格納。
 
 int[][] backEllipse = new int [20][20];
 
-float[][] secCoord = new float [2][60];  //秒ごとの座標の二次元配列。[0]はx、[1]がy座標。
+float[][] secCoord = new float [2][60];  //秒ごとの座標の二次元配列。
 float[][] minCoord = new float [2][60];  //分ごと。
 float[][] hourCoord = new float [2][24];  //時間ごと。
 
@@ -35,7 +35,7 @@ void setup(){
   repeatCalc(8, 45, "24/3");
   repeatCalc(12, 30, "60/5");
   
-  varI1 = 4;
+  varI1 = 1;
 }
 
 
@@ -65,12 +65,6 @@ void draw(){
   }
   
   secCounter();
-  
-  /*
-  if(frameCount <= 300){
-    saveFrame("frame/frame####.tga");
-  }
-  */
 }
 
 
@@ -111,36 +105,49 @@ void calcCoord(int i, float rad, String type){
     case "24/3":
       stringCoord1[0][i] = radiusStr1 * cos(rad);
       stringCoord1[1][i] = radiusStr1 * sin(rad);
+      break;
     
     case "60/5":
       stringCoord2[0][i] = radiusStr2 * cos(rad);
       stringCoord2[1][i] = radiusStr2 * sin(rad);
+      break;
   }
 }
 
 
 void visiblitySet(){
-  for(int i = 0; i < 60; i++){
-    if(i <= second()){  //秒の図形の可視設定。
-      visSec[i] = true;
+  repSet(60,second(),"second");
+  repSet(60,minute(),"minute");
+  repSet(24,hour(),"hour");
+}
+
+
+void repSet(int repeat, int check, String type){
+  for(int i = 0; i < repeat; i++){
+    if(i <= check){  //秒の図形の可視設定。
+      switch(type){
+        case "second":
+          visSec[i] = true;
+          break;
+        case "minute":
+          visMin[i] = true;
+          break;
+        case "hour":
+          visHour[i] = true;
+          break;
+      }
     }else{
-      visSec[i] = false;
-    }
-  }
-  
-  for(int i = 0; i < 60; i++){
-    if(i <= minute()){  //分の。
-      visMin[i] = true;
-    }else{
-      visMin[i] = false;
-    }
-  }
-  
-  for(int i = 0; i < 24; i++){
-    if(i <= hour()){  //時間の。
-      visHour[i] = true;
-    }else{
-      visHour[i] = false;
+      switch(type){
+        case "second":
+          visSec[i] = false;
+          break;
+        case "minute":
+          visMin[i] = false;
+          break;
+        case "hour":
+          visHour[i] = false;
+          break;
+      }
     }
   }
 }
@@ -187,13 +194,13 @@ void secCounter(){
   stroke(colors[0], colors[1]-varI1, colors[2],1);
   noFill();
   
-  float shrink = 120/(varI1/4);
+  float shrink = (30/varI1)*4;
   ellipse(0, 0, 150 - shrink, 150 - shrink);
   
-  if(varI1 > 120){
-    varI1 = 4;
+  if(varI1 > 30){
+    varI1 = 1;
   }else{
-    varI1 += 4;
+    varI1++;
   }
 }
 
