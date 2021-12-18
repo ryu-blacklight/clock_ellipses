@@ -157,7 +157,7 @@ void setEllipse(float x, float y, int dia, boolean filling, boolean visible){  /
   
   char vis;
   
-  if(visible == false){  //ブーリアンをエセ２進数に変換。
+  if(!visible){  //ブーリアンをエセ２進数に変換。下のfilling条件式でアルファにする。
     //可視設定がfalseの時。
     vis = 0;
   }else{
@@ -165,7 +165,7 @@ void setEllipse(float x, float y, int dia, boolean filling, boolean visible){  /
     vis = 1;
   }
   
-  if(filling == false){  //fillするかどうかの引数に対する設定の呼び出し。
+  if(!filling){  //fillするかどうかの引数に対する設定の呼び出し。
     //fillしなくていい時。
     noFill();
     strokeWeight(2);
@@ -232,9 +232,7 @@ void backEllipse(){
 
 /*
 参考記事
-
 三角関数を使った円形配置の方法
   https://www.webdelog.info/entry/2016/06/12/arranged-in-the-circumferential-direction.html
   https://r-dimension.xsrv.jp/classes_j/sine_cosine/
-
 */
