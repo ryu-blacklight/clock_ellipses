@@ -1,6 +1,5 @@
 # clock_orbital
 何らかの表現で時間を表示するプログラムを制作する課題の制作物。<br>
-
 My work of a Assignment in school "Time showing program on any expression".
 
 2021/12/19
