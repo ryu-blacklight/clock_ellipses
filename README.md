@@ -3,12 +3,11 @@
 
 My work of a Assignment in school "Time showing program on any expression".
 
+*
 
+*
 
-
-
-
-
+*
 
 2021/12/19
 if文のboolean条件式が(var == false)の形のままだったので(!var)に変更。
