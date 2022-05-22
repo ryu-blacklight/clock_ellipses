@@ -1,4 +1,4 @@
-# clock_orbital
+# clock_ellipses
 何らかの表現で時間を表示するプログラムを制作する課題の制作物。<br>
 My works of a Assignment in school "Time showing program on any expression".<br>
 <br><br><br>
